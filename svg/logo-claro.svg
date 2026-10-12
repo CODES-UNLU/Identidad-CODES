@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 330 290" role="img" aria-labelledby="t">
+  <title id="t">CODES++</title><style>.brillo{stroke:#39c0c3;opacity:.55}</style>
+  <defs><mask id="corte" maskUnits="userSpaceOnUse" x="0" y="0" width="330" height="290"><rect width="330" height="290" fill="#fff"/><circle cx="244" cy="150" r="86" fill="#000"/></mask><clipPath id="globo"><circle cx="158" cy="148" r="116"/></clipPath><linearGradient id="trazo" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="330" y2="290"><stop offset="0" class="s0" stop-color="#2a8a8d"/><stop offset="1" class="s1" stop-color="#1e6b6e"/></linearGradient><linearGradient id="letra" gradientUnits="userSpaceOnUse" x1="0" y1="56" x2="0" y2="244"><stop offset="0" class="s0" stop-color="#2a8a8d"/><stop offset="1" class="s1" stop-color="#1e6b6e"/></linearGradient></defs>
+  <g mask="url(#corte)" fill="none" stroke="url(#trazo)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="158" cy="148" r="116"/><line x1="158" y1="32" x2="158" y2="264"/><ellipse cx="158" cy="148" rx="48" ry="116"/><ellipse cx="158" cy="148" rx="88" ry="116"/>
+    <g clip-path="url(#globo)"><line x1="42" y1="148" x2="274" y2="148"/><path d="M42 82 Q158 104 274 82"/><path d="M42 210 Q158 232 274 210"/></g>
+    <path d="M36.65 59.83 L37.79 58.4 L39.06 57.06 L40.46 55.82 L41.98 54.67 L43.63 53.63 L45.4 52.69 L47.29 51.85 L49.3 51.11 L51.43 50.48 L53.67 49.95 L56.02 49.52 L58.48 49.21 L61.05 48.99 L63.72 48.89 L66.49 48.89 L69.36 48.99 L72.33 49.2 L75.39 49.52 L78.53 49.94 L81.76 50.47 L85.07 51.1 L88.47 51.84 L91.93 52.68 L95.47 53.62 L99.07 54.66 L102.73 55.8 L106.46 57.05 L110.24 58.38 L114.07 59.82 L117.95 61.35 L121.87 62.97 L125.83 64.68 L129.82 66.48 L133.85 68.37 L137.9 70.35 L141.97 72.4 L146.06 74.54 L150.16 76.76 L154.27 79.05 L158.39 81.42 L162.5 83.86 L166.61 86.36 L170.71 88.94 L174.79 91.57 L178.86 94.27 L182.91 97.03 L186.93 99.83"/><path d="M36.65 236.17 L37.79 237.6 L39.06 238.94 L40.46 240.18 L41.98 241.33 L43.63 242.37 L45.4 243.31 L47.29 244.15 L49.3 244.89 L51.43 245.52 L53.67 246.05 L56.02 246.48 L58.48 246.79 L61.05 247.01 L63.72 247.11 L66.49 247.11 L69.36 247.01 L72.33 246.8 L75.39 246.48 L78.53 246.06 L81.76 245.53 L85.07 244.9 L88.47 244.16 L91.93 243.32 L95.47 242.38 L99.07 241.34 L102.73 240.2 L106.46 238.95 L110.24 237.62 L114.07 236.18 L117.95 234.65 L121.87 233.03 L125.83 231.32 L129.82 229.52 L133.85 227.63 L137.9 225.65 L141.97 223.6 L146.06 221.46 L150.16 219.24 L154.27 216.95 L158.39 214.58 L162.5 212.14 L166.61 209.64 L170.71 207.06 L174.79 204.43 L178.86 201.73 L182.91 198.97"/>
+    <line x1="193.85" y1="37.68" x2="199.85" y2="59.68"/>
+    <g><circle cx="36.65" cy="59.83" r="8" stroke-width="5"/><circle cx="36.65" cy="236.17" r="8" stroke-width="5"/><circle cx="199.85" cy="59.68" r="8" stroke-width="5"/></g>
+  </g>
+  <path class="c" d="M290.04 194.46 A64 64 0 1 1 290.04 105.54" fill="none" stroke="url(#letra)" stroke-width="30"/>
+  <path class="brillo" d="M273.15 196.64 A55 55 0 1 1 271.5 102.37" fill="none" stroke-width="5" stroke-linecap="round"/>
+  <g fill="none" stroke="url(#trazo)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="228" y1="180" x2="255" y2="165"/>
+    <g><circle cx="255" cy="165" r="7" stroke-width="5"/></g>
+  </g>
+</svg>
