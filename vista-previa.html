@@ -1,13 +1,28 @@
 <!doctype html>
 <html lang="es"><meta charset="utf-8"><title>Logo CODES++</title>
 <style>
-body{margin:0;font-family:system-ui,sans-serif;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+body{margin:0;font-family:system-ui,sans-serif;background:#0f0f0f;color:#e6f7f7}
+.logos{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
 figure{margin:0;padding:32px;display:flex;flex-direction:column;align-items:center;gap:12px}
 img{width:220px}figcaption{font-size:13px;opacity:.7}
-.claro{background:#fff;color:#212529}.oscuro{background:#0f0f0f;color:#fff}
+.claro{background:#fff;color:#0e4a5a}.oscuro{background:#0f0f0f}
+.paleta{display:flex;flex-wrap:wrap;gap:16px;padding:32px}
+.sw{width:120px}.sw i{display:block;height:72px;border-radius:12px}
+.sw b{display:block;margin-top:8px;font-size:14px}.sw code{font-size:12px;opacity:.7}
+.deg{height:28px;border-radius:14px;margin:0 32px 32px;background:linear-gradient(90deg,#4fe3c1,#39c0c3,#2a8fd0,#12385e)}
 </style>
-<figure class="claro"><img src="svg/logo.svg"><figcaption>logo.svg (adaptable) · fondo claro</figcaption></figure>
-<figure class="oscuro"><img src="svg/logo.svg"><figcaption>logo.svg (adaptable) · fondo oscuro</figcaption></figure>
-<figure class="claro"><img src="svg/logo-claro.svg"><figcaption>logo-claro.svg</figcaption></figure>
-<figure class="oscuro"><img src="svg/logo-oscuro.svg"><figcaption>logo-oscuro.svg</figcaption></figure>
+<section class="paleta">
+  <div class="sw"><i style="background:#4fe3c1"></i><b>Menta</b><code>#4fe3c1</code></div>
+  <div class="sw"><i style="background:#39c0c3"></i><b>Teal (principal)</b><code>#39c0c3</code></div>
+  <div class="sw"><i style="background:#2a8fd0"></i><b>Océano</b><code>#2a8fd0</code></div>
+  <div class="sw"><i style="background:#0e4a5a"></i><b>Profundo</b><code>#0e4a5a</code></div>
+  <div class="sw"><i style="background:#12385e"></i><b>Abismo</b><code>#12385e</code></div>
+</section>
+<div class="deg"></div>
+<section class="logos">
+  <figure class="claro"><img src="svg/logo.svg"><figcaption>logo.svg (adaptable) · fondo claro</figcaption></figure>
+  <figure class="oscuro"><img src="svg/logo.svg"><figcaption>logo.svg (adaptable) · fondo oscuro</figcaption></figure>
+  <figure class="claro"><img src="svg/logo-claro.svg"><figcaption>logo-claro.svg</figcaption></figure>
+  <figure class="oscuro"><img src="svg/logo-oscuro.svg"><figcaption>logo-oscuro.svg</figcaption></figure>
+</section>
 </html>

@@ -4,35 +4,51 @@ Uso: python generar_logo.py
 Salida: svg/logo.svg (adaptable claro/oscuro), svg/logo-claro.svg,
         svg/logo-oscuro.svg, svg/logo-mono.svg y png/*.png (si hay resvg_py)
 
-Intercala colores como el wordmark del sitio (teal + tinta):
-  - teal: contorno del globo, paralelos y mitad superior de la C
-  - cian: órbitas y nodos de circuito
-  - tinta: meridianos y mitad inferior de la C (#2c3e50 en claro, #e9ecef en oscuro)
+Paleta análoga construida alrededor del teal principal del sitio (#39c0c3):
+menta (hacia el verde) -> teal -> océano (hacia el azul) -> profundo.
+Todos los tonos son de la misma familia; el contraste sale de la luminosidad.
+  - contorno: globo y paralelos (teal -> océano)
+  - orbita:   órbitas, trazas y nodos (menta -> teal)
+  - letra:    mitad superior de la C (menta -> teal -> océano)
+  - base:     mitad inferior de la C (teal profundo -> azul profundo)
+  - red:      meridianos (teal profundo)
 """
 import math
 from pathlib import Path
 
-# Paleta del sitio (CSS de codesunlu.tech). Cada tema define todos los roles.
+# Familia de colores (de referencia; los temas usan variantes de estos)
+PALETA = {
+    "Menta": "#4fe3c1",
+    "Teal": "#39c0c3",       # --primary de codesunlu.tech
+    "Océano": "#2a8fd0",
+    "Profundo": "#0e4a5a",
+    "Abismo": "#12385e",
+}
+
+# Degradados: 3 paradas cada uno. Sólidos: red, punto, brillo.
 TEMAS = {
-    # Para fondos claros: tonos con contraste sobre blanco
+    # Para fondos claros: versiones más saturadas/oscuras para contrastar con blanco
     "claro": {
-        "teal0": "#39c0c3",   # --primary
-        "teal1": "#1e6b6e",   # teal profundo
-        "cian0": "#00b8e0",   # #00d4ff oscurecido para leer sobre blanco
-        "cian1": "#2a8a8d",   # --primary-dark
-        "tinta": "#2c3e50",
-        "brillo": "#5dd5d8",  # --primary-light
+        "contorno": ["#39c0c3", "#2a9fc9", "#1f6fa6"],
+        "orbita":   ["#1fc49b", "#2bb5b4", "#2a9fc9"],
+        "letra":    ["#4fe3c1", "#39c0c3", "#2a8fd0"],
+        "base":     ["#0e4a5a", "#0f5f73", "#12385e"],
+        "red":      "#14596b",
+        "punto":    "#1fc49b",
+        "brillo":   "#d2fbf1",
     },
-    # Para fondos oscuros (#0f0f0f del sitio)
+    # Para fondos oscuros (#0f0f0f del sitio): la misma familia, más luminosa
     "oscuro": {
-        "teal0": "#5dd5d8",   # --primary-light
-        "teal1": "#2a8a8d",   # --primary-dark
-        "cian0": "#00d4ff",
-        "cian1": "#39c0c3",   # --primary
-        "tinta": "#e9ecef",
-        "brillo": "#b8f0f1",
+        "contorno": ["#5dd5d8", "#39b5d8", "#3b8fe0"],
+        "orbita":   ["#5ef2c8", "#46d9c6", "#39c0c3"],
+        "letra":    ["#7cf5d6", "#45d0c8", "#39a2dc"],
+        "base":     ["#1f8f9c", "#237ba8", "#2a5fb0"],
+        "red":      "#25808b",
+        "punto":    "#5ef2c8",
+        "brillo":   "#e3fff8",
     },
 }
+DEGRADADOS = ("contorno", "orbita", "letra", "base")
 
 W, H = 340, 300
 
@@ -129,15 +145,10 @@ def build():
       {gap_nodes}
       <circle cx="{cx}" cy="{cy}" r="{f(corte_c)}"/>
     </mask>
-    <linearGradient id="gTeal" gradientUnits="userSpaceOnUse" x1="{gx - GLOBE_R}" y1="{gy - GLOBE_R}" x2="{gx + GLOBE_R}" y2="{gy + GLOBE_R}">
-      <stop offset="0" class="teal0"/><stop offset="1" class="teal1"/>
-    </linearGradient>
-    <linearGradient id="gCian" gradientUnits="userSpaceOnUse" x1="0" y1="{gy - 90}" x2="{W}" y2="{gy + 90}">
-      <stop offset="0" class="cian0"/><stop offset="1" class="cian1"/>
-    </linearGradient>
-    <linearGradient id="gLetra" gradientUnits="userSpaceOnUse" x1="{cx}" y1="{cy - C_R - C_W / 2}" x2="{cx}" y2="{cy}">
-      <stop offset="0" class="teal0"/><stop offset="1" class="teal1"/>
-    </linearGradient>"""
+{grad("contorno", gx - GLOBE_R, gy - GLOBE_R, gx + GLOBE_R, gy + GLOBE_R)}
+    {grad("orbita", 0, gy - 90, W, gy + 90)}
+    {grad("letra", cx - C_R, cy - C_R - C_W / 2, cx + C_R, cy)}
+    {grad("base", cx - C_R - C_W / 2, cy, cx + C_R, cy + C_R)}"""
 
     # --- Globo ---
     mer = (f'<line x1="{gx}" y1="{gy - GLOBE_R}" x2="{gx}" y2="{gy + GLOBE_R}"/>'
@@ -157,31 +168,37 @@ def build():
   <g fill="none" stroke-linecap="round" stroke-linejoin="round">
     <g mask="url(#cortaGlobo)">
       <g clip-path="url(#globo)">
-        <g class="tinta" stroke-width="{W_RED}">{mer}</g>
-        <g stroke="url(#gTeal)" stroke-width="{W_RED}">{par}</g>
+        <g class="red" stroke-width="{W_RED}">{mer}</g>
+        <g stroke="url(#gContorno)" stroke-width="{W_RED}">{par}</g>
       </g>
-      <circle cx="{gx}" cy="{gy}" r="{GLOBE_R}" stroke="url(#gTeal)" stroke-width="{W_CONTORNO}"/>
-      <path d="{top_trace}" stroke="url(#gCian)" stroke-width="{W_ORBITA}"/>
+      <circle cx="{gx}" cy="{gy}" r="{GLOBE_R}" stroke="url(#gContorno)" stroke-width="{W_CONTORNO}"/>
+      <path d="{top_trace}" stroke="url(#gOrbita)" stroke-width="{W_ORBITA}"/>
     </g>
-    <g mask="url(#cortaC)" stroke="url(#gCian)" stroke-width="{W_ORBITA}">
+    <g mask="url(#cortaC)" stroke="url(#gOrbita)" stroke-width="{W_ORBITA}">
       {"".join(f'<path d="{d}"/>' for d in orbit_paths)}
     </g>
     <path d="{c_top}" stroke="url(#gLetra)" stroke-width="{C_W}" stroke-linecap="butt"/>
-    <path d="{c_bottom}" class="tinta" stroke-width="{C_W}" stroke-linecap="butt"/>
+    <path d="{c_bottom}" stroke="url(#gBase)" stroke-width="{C_W}" stroke-linecap="butt"/>
     <path d="{c_shine}" class="brillo" stroke-width="4"/>
-    <path d="{inner_trace}" stroke="url(#gCian)" stroke-width="{W_ORBITA}"/>
-    <g stroke="url(#gCian)" stroke-width="{W_ORBITA - 1.5}">
+    <path d="{inner_trace}" stroke="url(#gOrbita)" stroke-width="{W_ORBITA}"/>
+    <g stroke="url(#gOrbita)" stroke-width="{W_ORBITA - 1.5}">
       {"".join(node(*p) for p in nodes + [top_node, inner_node])}
     </g>
   </g>"""
     return defs, body
 
 
+def grad(rol, x1, y1, x2, y2):
+    stops = "".join(f'<stop offset="{i / 2:g}" class="{rol}{i}"/>' for i in range(3))
+    return (f'<linearGradient id="g{rol.capitalize()}" gradientUnits="userSpaceOnUse" '
+            f'x1="{f(x1)}" y1="{f(y1)}" x2="{f(x2)}" y2="{f(y2)}">{stops}</linearGradient>')
+
+
 def css(t):
-    return (f".teal0{{stop-color:{t['teal0']}}}.teal1{{stop-color:{t['teal1']}}}"
-            f".cian0{{stop-color:{t['cian0']}}}.cian1{{stop-color:{t['cian1']}}}"
-            f".tinta{{stroke:{t['tinta']}}}.brillo{{stroke:{t['brillo']};opacity:.6}}"
-            f".punto{{fill:{t['cian0']};stroke:none}}")
+    reglas = [f".{rol}{i}{{stop-color:{c}}}" for rol in DEGRADADOS for i, c in enumerate(t[rol])]
+    reglas += [f".red{{stroke:{t['red']}}}", f".punto{{fill:{t['punto']};stroke:none}}",
+               f".brillo{{stroke:{t['brillo']};opacity:.55}}"]
+    return "".join(reglas)
 
 
 def svg(style, defs, body, extra=""):
@@ -209,9 +226,10 @@ def main():
 
     # Monocromo: todo en currentColor (un solo color donde se inserte)
     mono_defs = defs
-    for stop in ("teal0", "teal1", "cian0", "cian1"):
-        mono_defs = mono_defs.replace(f'class="{stop}"', 'stop-color="currentColor"')
-    mono_style = ".tinta{stroke:currentColor}.brillo{stroke:none}.punto{fill:currentColor;stroke:none}"
+    for rol in DEGRADADOS:
+        for i in range(3):
+            mono_defs = mono_defs.replace(f'class="{rol}{i}"', 'stop-color="currentColor"')
+    mono_style = ".red{stroke:currentColor}.brillo{stroke:none}.punto{fill:currentColor;stroke:none}"
     (out / "logo-mono.svg").write_text(
         svg(mono_style, mono_defs, body, ' color="#39c0c3"'), encoding="utf-8")
 
