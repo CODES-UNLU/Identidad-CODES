@@ -177,17 +177,59 @@ En las hojas de estilo del sitio se utiliza intensivamente el canal Alfa del col
 
 ## 🎨 10. Guía de Aplicación para el Logotipo de CODES++
 
-Al vectorizar o componer el imagotipo (globo terráqueo con paralelos, meridianos y la letra **C**):
+El imagotipo (globo terráqueo que emerge de un libro abierto, con la letra **C** y un nodo de circuito) usa una **única familia teal**: los tres colores de marca del sitio más los escalones intermedios que hacen falta, todos con el mismo tono (OKLCH h ≈ 197,6°). Los verdes menta y los azules quedan fuera de la marca: mezclados con el teal hacen que el logo parezca de otra identidad.
+
+### Escala Teal de la Marca
+
+| Escalón | Color Hex | Equivalencia en el Sitio |
+| :---: | :---: | :--- |
+| 50 | `#e7fafa` | — |
+| 100 | `#c8f3f4` | — |
+| 200 | `#95e7e8` | — |
+| 300 | `#5dd5d8` | `--primary-light` |
+| 400 | `#39c0c3` | `--primary` |
+| 500 | `#30a5a8` | — |
+| 600 | `#2a8a8d` | `--primary-dark` |
+| 700 | `#1d6d6f` | — |
+| 800 | `#125355` | — |
+| 900 | `#083b3c` | — |
+| 950 | `#022324` | — |
+
+### Colores por Versión
+
+Cada capa del logo usa un escalón propio. Sobre fondo claro, el elemento más importante es el más profundo; sobre fondo oscuro, el más luminoso. Todos los degradados van a 135°, igual que los del sitio.
 
 1. **Versión para Fondos Oscuros (Sitio Web Oficial - `#0f0f0f`):**
-   - **Contorno y Globo:** Emplear la transición de `--primary-light` (`#5dd5d8`) hacia `--primary` (`#39c0c3`).
-   - **La 'C' Institucional:** Debe destacar como elemento focal, iniciando en un tono menta luminoso (`#7cf5d6` / `#5ef2c8`) y cerrando en el cian oficial (`#39c0c3`).
-   - **Meridianos / Red de Fondo:** Tonos cian profundos (`#1a5f61` / `#25808b`) para no competir con el trazo principal.
+   - **Contorno del Globo, Libro y Nodo:** degradado de `#5dd5d8` (300) a `#30a5a8` (500).
+   - **La 'C' Institucional:** el elemento focal y más luminoso, de `#95e7e8` (200) a `#39c0c3` (400).
+   - **Meridianos y Paralelos:** `#1d6d6f` (700), para no competir con el trazo principal.
+   - **Punto del Nodo:** `#e7fafa` (50).
 2. **Versión para Fondos Claros / Papelería:**
-   - Incrementar la densidad cromática utilizando `--primary-dark` (`#2a8a8d`) y azules profundos (`#1f6fa6`, `#0e4a5a`) para preservar el contraste según WCAG AA.
+   - **Contorno del Globo, Libro y Nodo:** el gradiente institucional `--gradient` (`#39c0c3` → `#2a8a8d`).
+   - **La 'C' Institucional:** el elemento más profundo, de `#30a5a8` (500) a `#1d6d6f` (700).
+   - **Meridianos y Paralelos:** `#5dd5d8` (300).
+   - **Punto del Nodo:** `#1d6d6f` (700).
 3. **Versión Monocromática:**
    - Para fondos oscuros: `#ffffff` o `#39c0c3`.
    - Para fondos claros: `#1a1a1a` o `#2a8a8d`.
+
+### Variables CSS de la Escala
+
+```css
+:root {
+  --codes-teal-50: #e7fafa;
+  --codes-teal-100: #c8f3f4;
+  --codes-teal-200: #95e7e8;
+  --codes-teal-300: #5dd5d8; /* --primary-light */
+  --codes-teal-400: #39c0c3; /* --primary */
+  --codes-teal-500: #30a5a8;
+  --codes-teal-600: #2a8a8d; /* --primary-dark */
+  --codes-teal-700: #1d6d6f;
+  --codes-teal-800: #125355;
+  --codes-teal-900: #083b3c;
+  --codes-teal-950: #022324;
+}
+```
 
 ---
 

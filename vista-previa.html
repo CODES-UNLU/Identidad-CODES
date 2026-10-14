@@ -1,28 +1,151 @@
 <!doctype html>
-<html lang="es"><meta charset="utf-8"><title>Logo CODES++</title>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Logo CODES++</title>
 <style>
-body{margin:0;font-family:system-ui,sans-serif;background:#0f0f0f;color:#e6f7f7}
-.logos{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-figure{margin:0;padding:32px;display:flex;flex-direction:column;align-items:center;gap:12px}
-img{width:220px}figcaption{font-size:13px;opacity:.7}
-.claro{background:#fff;color:#0e4a5a}.oscuro{background:#0f0f0f}
-.paleta{display:flex;flex-wrap:wrap;gap:16px;padding:32px}
-.sw{width:120px}.sw i{display:block;height:72px;border-radius:12px}
-.sw b{display:block;margin-top:8px;font-size:14px}.sw code{font-size:12px;opacity:.7}
-.deg{height:28px;border-radius:14px;margin:0 32px 32px;background:linear-gradient(90deg,#4fe3c1,#39c0c3,#2a8fd0,#12385e)}
+/* La página sigue al modo del sistema, igual que logo.svg */
+:root{--fondo:#ffffff;--borde:#dfe7e7;--texto:#1a1a1a;--suave:#555f5f;--titulo:#0f0f0f;--enlace:#1d6d6f}
+@media (prefers-color-scheme:dark){:root{--fondo:#0f0f0f;--borde:#404040;--texto:#e0e0e0;--suave:#b0b0b0;--titulo:#fff;--enlace:#5dd5d8}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--fondo);color:var(--texto);font:15px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:1080px;margin:0 auto;padding:48px 16px 72px}
+h1{margin:0;color:var(--titulo);font-size:30px;letter-spacing:-.01em}
+h2{margin:56px 0 6px;color:var(--titulo);font-size:19px}
+a{color:var(--enlace)}
+p{margin:0 0 18px;color:var(--suave);max-width:70ch}
+code{font:12.5px ui-monospace,Consolas,monospace}
+.portada{display:grid;grid-template-columns:minmax(0,320px) 1fr;gap:40px;align-items:center}
+.portada img{width:100%;height:auto}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+figure{margin:0;padding:28px 20px 16px;border:1px solid var(--borde);border-radius:14px;display:flex;flex-direction:column;align-items:center;gap:14px}
+figure img{width:100%;max-width:240px;height:auto}
+figcaption{font-size:13px;opacity:.8;text-align:center}
+.claro{background:#fff;color:#1d6d6f;border-color:#dfe7e7}
+.oscuro{background:#0f0f0f;color:#e0e0e0;border-color:#404040}
+.sistema{background:var(--fondo)}
+.blanco img{filter:brightness(0) invert(1)}
+.negro img{filter:brightness(0)}
+.chicos{display:flex;flex-wrap:wrap;align-items:flex-end;gap:24px;padding:24px;border-radius:14px;border:1px solid var(--borde)}
+.chicos span{display:flex;flex-direction:column;align-items:center;gap:8px;font-size:12px;opacity:.75}
+.avatares{display:flex;flex-wrap:wrap;gap:24px;align-items:center}
+.avatares img{width:180px;height:180px;border:1px solid var(--borde)}
+.redondo{border-radius:50%}
+.cuadrado{border-radius:22px}
+.escala{display:grid;grid-template-columns:repeat(auto-fit,minmax(88px,1fr));border-radius:14px;overflow:hidden}
+.escala div{padding:56px 10px 10px;font-size:12px;line-height:1.35}
+.escala b{display:block;font-size:13px}
+.escala i{display:block;font-style:normal;opacity:.8}
+.oscura{color:#fff}
+.clara{color:#022324}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--borde)}
+th{color:var(--titulo);font-weight:600}
+.muestra{display:inline-block;width:56px;height:18px;border-radius:9px;vertical-align:middle}
+.dos{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.tabla{overflow-x:auto}
+@media (max-width:640px){.portada{grid-template-columns:1fr;gap:24px}.portada img{max-width:260px}}
 </style>
-<section class="paleta">
-  <div class="sw"><i style="background:#4fe3c1"></i><b>Menta</b><code>#4fe3c1</code></div>
-  <div class="sw"><i style="background:#39c0c3"></i><b>Teal (principal)</b><code>#39c0c3</code></div>
-  <div class="sw"><i style="background:#2a8fd0"></i><b>Océano</b><code>#2a8fd0</code></div>
-  <div class="sw"><i style="background:#0e4a5a"></i><b>Profundo</b><code>#0e4a5a</code></div>
-  <div class="sw"><i style="background:#12385e"></i><b>Abismo</b><code>#12385e</code></div>
+</head>
+<body>
+<main>
+
+<section class="portada">
+  <img src="svg/logo.svg" alt="Logo de CODES++">
+  <div>
+    <h1>CODES++</h1>
+    <p>Centro Organizado de Estudiantes de Sistemas · UNLu. Un globo terráqueo que emerge de un libro abierto,
+      con la C al frente y un nodo de circuito: estudio, conexión y sistemas.</p>
+    <p>Toda la paleta es una sola familia teal, construida alrededor del color del sitio
+      <a href="https://www.codesunlu.tech/">codesunlu.tech</a> (<code>#39c0c3</code>).</p>
+  </div>
 </section>
-<div class="deg"></div>
-<section class="logos">
-  <figure class="claro"><img src="svg/logo.svg"><figcaption>logo.svg (adaptable) · fondo claro</figcaption></figure>
-  <figure class="oscuro"><img src="svg/logo.svg"><figcaption>logo.svg (adaptable) · fondo oscuro</figcaption></figure>
-  <figure class="claro"><img src="svg/logo-claro.svg"><figcaption>logo-claro.svg</figcaption></figure>
-  <figure class="oscuro"><img src="svg/logo-oscuro.svg"><figcaption>logo-oscuro.svg</figcaption></figure>
-</section>
+
+<h2>Versiones</h2>
+<p>Cada archivo está pensado para un fondo. <code>logo.svg</code> cambia solo según el modo claro/oscuro del sistema.</p>
+<div class="grid">
+  <figure class="claro"><img src="svg/logo-claro.svg" alt=""><figcaption>logo-claro.svg · fondos claros</figcaption></figure>
+  <figure class="oscuro"><img src="svg/logo-oscuro.svg" alt=""><figcaption>logo-oscuro.svg · fondos oscuros</figcaption></figure>
+  <figure class="sistema"><img src="svg/logo.svg" alt=""><figcaption>logo.svg · sigue al sistema</figcaption></figure>
+  <figure class="claro"><img src="svg/logo-mono.svg" alt=""><figcaption>logo-mono.svg · un solo color</figcaption></figure>
+  <figure class="oscuro blanco"><img src="svg/logo-mono.svg" alt=""><figcaption>Monocromo en blanco</figcaption></figure>
+  <figure class="claro negro"><img src="svg/logo-mono.svg" alt=""><figcaption>Monocromo en negro</figcaption></figure>
+</div>
+
+<h2>Sobre las superficies del sitio</h2>
+<p>La versión oscura sobre los fondos que usa codesunlu.tech.</p>
+<div class="grid">
+  <figure class="oscuro" style="background:#0f0f0f"><img src="svg/logo-oscuro.svg" alt=""><figcaption>--background · #0f0f0f</figcaption></figure>
+  <figure class="oscuro" style="background:#1a1a1a"><img src="svg/logo-oscuro.svg" alt=""><figcaption>--background-alt · #1a1a1a</figcaption></figure>
+  <figure class="oscuro" style="background:#2d2d2d"><img src="svg/logo-oscuro.svg" alt=""><figcaption>--background-card · #2d2d2d</figcaption></figure>
+  <figure class="oscuro" style="background:#16213e"><img src="svg/logo-oscuro.svg" alt=""><figcaption>Charlas · #16213e</figcaption></figure>
+</div>
+
+<h2>Tamaños chicos</h2>
+<p>De 128 a 16 px de ancho. En favicons conviene usar <code>logo.svg</code>, que además se adapta al tema.</p>
+<div class="chicos claro">
+  <span><img src="svg/logo-claro.svg" width="128" alt="">128</span>
+  <span><img src="svg/logo-claro.svg" width="64" alt="">64</span>
+  <span><img src="svg/logo-claro.svg" width="48" alt="">48</span>
+  <span><img src="svg/logo-claro.svg" width="32" alt="">32</span>
+  <span><img src="svg/logo-claro.svg" width="16" alt="">16</span>
+</div>
+<div class="chicos oscuro" style="margin-top:12px">
+  <span><img src="svg/logo-oscuro.svg" width="128" alt="">128</span>
+  <span><img src="svg/logo-oscuro.svg" width="64" alt="">64</span>
+  <span><img src="svg/logo-oscuro.svg" width="48" alt="">48</span>
+  <span><img src="svg/logo-oscuro.svg" width="32" alt="">32</span>
+  <span><img src="svg/logo-oscuro.svg" width="16" alt="">16</span>
+</div>
+
+<h2>Avatar para redes</h2>
+<p><code>png/avatar-1024.png</code>: cuadrado, sobre el fondo del sitio. El logo entra entero también en recortes circulares.</p>
+<div class="avatares">
+  <img class="redondo" src="png/avatar-1024.png" alt="Avatar circular">
+  <img class="cuadrado" src="png/avatar-1024.png" alt="Avatar cuadrado">
+</div>
+
+<h2>Escala teal</h2>
+<p>Un solo tono (OKLCH h ≈ 197,6°) en pasos parejos de luminosidad. Los escalones 300, 400 y 600 son exactamente los colores del sitio.</p>
+<div class="escala">
+  <div class="clara" style="background:#e7fafa"><b>50</b>#e7fafa</div>
+  <div class="clara" style="background:#c8f3f4"><b>100</b>#c8f3f4</div>
+  <div class="clara" style="background:#95e7e8"><b>200</b>#95e7e8</div>
+  <div class="clara" style="background:#5dd5d8"><b>300</b>#5dd5d8<i>--primary-light</i></div>
+  <div class="clara" style="background:#39c0c3"><b>400</b>#39c0c3<i>--primary</i></div>
+  <div class="clara" style="background:#30a5a8"><b>500</b>#30a5a8</div>
+  <div class="oscura" style="background:#2a8a8d"><b>600</b>#2a8a8d<i>--primary-dark</i></div>
+  <div class="oscura" style="background:#1d6d6f"><b>700</b>#1d6d6f</div>
+  <div class="oscura" style="background:#125355"><b>800</b>#125355</div>
+  <div class="oscura" style="background:#083b3c"><b>900</b>#083b3c</div>
+  <div class="oscura" style="background:#022324"><b>950</b>#022324</div>
+</div>
+
+<h2>Colores del logo</h2>
+<p>Cada capa usa un escalón propio. En fondo claro, lo más importante es lo más profundo; en fondo oscuro, lo más luminoso.
+  Los degradados van a 135°, igual que los del sitio.</p>
+<div class="dos">
+  <div class="tabla">
+    <table>
+      <tr><th>Fondo claro</th><th>Escalones</th><th></th></tr>
+      <tr><td>Grilla del globo</td><td>300</td><td><span class="muestra" style="background:#5dd5d8"></span></td></tr>
+      <tr><td>Contorno, libro y nodo</td><td>400 → 600</td><td><span class="muestra" style="background:linear-gradient(135deg,#39c0c3,#2a8a8d)"></span></td></tr>
+      <tr><td>Letra C</td><td>500 → 700</td><td><span class="muestra" style="background:linear-gradient(135deg,#30a5a8,#1d6d6f)"></span></td></tr>
+      <tr><td>Punto del nodo</td><td>700</td><td><span class="muestra" style="background:#1d6d6f"></span></td></tr>
+    </table>
+  </div>
+  <div class="tabla">
+    <table>
+      <tr><th>Fondo oscuro</th><th>Escalones</th><th></th></tr>
+      <tr><td>Grilla del globo</td><td>700</td><td><span class="muestra" style="background:#1d6d6f"></span></td></tr>
+      <tr><td>Contorno, libro y nodo</td><td>300 → 500</td><td><span class="muestra" style="background:linear-gradient(135deg,#5dd5d8,#30a5a8)"></span></td></tr>
+      <tr><td>Letra C</td><td>200 → 400</td><td><span class="muestra" style="background:linear-gradient(135deg,#95e7e8,#39c0c3)"></span></td></tr>
+      <tr><td>Punto del nodo</td><td>50</td><td><span class="muestra" style="background:#e7fafa"></span></td></tr>
+    </table>
+  </div>
+</div>
+
+</main>
+</body>
 </html>
