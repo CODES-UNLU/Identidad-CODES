@@ -21,7 +21,7 @@ La paleta es una única familia teal construida alrededor del color principal de
 | `svg/logo-mono.svg` | Un solo color (`currentColor`, por defecto `#39c0c3`) |
 | `png/logo-claro-*.png`, `png/logo-oscuro-*.png` | Exportaciones a 512, 1024 y 2048 px con fondo transparente |
 | `png/avatar-1024.png` | Avatar cuadrado para redes sobre `#0f0f0f`; también entra en recortes circulares |
-| `vista-previa.html` | Versiones, fondos del sitio, tamaños chicos y paleta |
+| `index.html` | Sitio de identidad en GitHub Pages: versiones, fondos del sitio, tamaños chicos y paleta |
 
 ## Paleta
 
