@@ -6,7 +6,7 @@ Salida: svg/logo.svg (adaptable claro/oscuro), svg/logo-claro.svg, svg/logo-oscu
 
 Composición: un globo terráqueo que emerge de un libro abierto (las páginas bajan
 en V hasta el lomo), con la C de CODES al frente, apoyada sobre la página
-derecha, y un nodo de circuito dentro de la C.
+derecha, y un nodo de circuito suelto dentro de la C.
 
 Paleta: una sola familia teal, de tono constante (OKLCH h ≈ 197.6°) y anclada en
 los colores del sitio codesunlu.tech (300 = --primary-light, 400 = --primary,
@@ -51,7 +51,6 @@ GAP = 6            # separación en los cruces
 W_CONTORNO = 9
 W_GRILLA = 5
 W_LIBRO = 7.5
-W_TRAZA = 6.5
 MIN_TRAMO = 34     # los tramos de grilla más cortos se quitan: no quedan fragmentos sueltos
 
 MERIDIANOS = (0.42, 0.76)                         # semieje horizontal de cada meridiano
@@ -74,7 +73,6 @@ C_APERTURA = 42    # medio ángulo de la abertura (grados)
 C_APOYO = 8        # luz entre la C y la página derecha
 NODO_POS = (0.1, 0.12)  # posición del nodo respecto del centro de la C
 NODO_R = 8.5       # anillo del nodo
-NODO_ANG = 31      # inclinación de la traza que une el nodo con la C (grados)
 
 
 def f(v):
@@ -261,19 +259,14 @@ def geometria():
                 f"V{f(H)} H{f(sup_izq[3][0] + OX)} Z")
     libro = [curva(pagina(i, lado)) for i in range(PAGINAS) for lado in (-1, 1)]
 
-    # Nodo dentro de la C; su traza nace en la pared interior (la C tapa el remate)
+    # Nodo suelto dentro de la C, sin traza que lo una a ella
     nx, ny = C_X + NODO_POS[0] * R, C_Y + NODO_POS[1] * R
-    dx, dy = -math.cos(math.radians(NODO_ANG)), math.sin(math.radians(NODO_ANG))
-    ox, oy, r_int = nx - C_X, ny - C_Y, (C_R - C_W / 2) * R
-    b = ox * dx + oy * dy
-    t = -b + math.sqrt(b * b - (ox * ox + oy * oy - r_int * r_int)) + 3
     return {
         "grilla": grilla,
         "contorno": contorno,
         "interior": interior,
         "borde": (curva(sup_izq), curva(sup_der)),
         "libro": libro,
-        "traza": f"M{P(nx + dx * t, ny + dy * t)} L{P(nx + dx * NODO_R, ny + dy * NODO_R)}",
         "c": arco_c(C_R * R, C_APERTURA, 360 - C_APERTURA),
         "nodo": (nx + OX, ny + OY),
     }
@@ -317,7 +310,6 @@ def svg(g, pinturas, estilo="", raiz=""):
     <g stroke="{p["trazo"]}" stroke-width="{W_LIBRO}">
       {"".join(f'<path d="{d}"/>' for d in g["libro"])}
     </g>
-    <path d="{g["traza"]}" stroke="{p["trazo"]}" stroke-width="{W_TRAZA}"/>
     <path d="{g["c"]}" stroke="{p["letra"]}" stroke-width="{f(C_W * R)}" stroke-linecap="butt"/>
     <circle cx="{f(nx)}" cy="{f(ny)}" r="{NODO_R}" stroke="{p["trazo"]}" stroke-width="5"/>
     <circle cx="{f(nx)}" cy="{f(ny)}" r="3" {p["punto"]} stroke="none"/>
