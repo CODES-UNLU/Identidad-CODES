@@ -6,13 +6,13 @@ Salida: svg/logo.svg (adaptable claro/oscuro), svg/logo-claro.svg, svg/logo-oscu
 
 Composición: un globo terráqueo que emerge de un libro abierto (las páginas bajan
 en V hasta el lomo), con la C de CODES al frente, apoyada sobre la página
-derecha, y un nodo de circuito suelto dentro de la C.
+derecha.
 
 Paleta: una sola familia teal, de tono constante (OKLCH h ≈ 197.6°) y anclada en
 los colores del sitio codesunlu.tech (300 = --primary-light, 400 = --primary,
 600 = --primary-dark). Cada capa usa su propio escalón:
   - grilla: meridianos y paralelos, la capa más tenue
-  - trazo:  contorno del globo, libro y nodo (degradado a 135°, como el sitio)
+  - trazo:  contorno del globo y libro (degradado a 135°, como el sitio)
   - letra:  la C, la capa de mayor contraste con el fondo
 """
 import bisect
@@ -37,9 +37,9 @@ ESCALA = {
 # Escalón de ESCALA para cada rol; los degradados van de (inicio, fin) a 135°
 TEMAS = {
     # Fondo claro: cuanto más importante el elemento, más profundo el tono
-    "claro": {"grilla": 300, "trazo": (400, 600), "letra": (500, 700), "punto": 700},
+    "claro": {"grilla": 300, "trazo": (400, 600), "letra": (500, 700)},
     # Fondo oscuro (#0f0f0f del sitio): cuanto más importante, más luminoso
-    "oscuro": {"grilla": 700, "trazo": (300, 500), "letra": (200, 400), "punto": 50},
+    "oscuro": {"grilla": 700, "trazo": (300, 500), "letra": (200, 400)},
 }
 FONDO_AVATAR = "#0f0f0f"  # --background del sitio
 AVATAR_ANCHO = 0.74       # ancho del logo dentro del avatar cuadrado
@@ -71,8 +71,6 @@ C_R = 0.5          # radio del eje del trazo
 C_W = 0.26         # grosor
 C_APERTURA = 42    # medio ángulo de la abertura (grados)
 C_APOYO = 8        # luz entre la C y la página derecha
-NODO_POS = (0.1, 0.12)  # posición del nodo respecto del centro de la C
-NODO_R = 8.5       # anillo del nodo
 
 
 def f(v):
@@ -259,8 +257,6 @@ def geometria():
                 f"V{f(H)} H{f(sup_izq[3][0] + OX)} Z")
     libro = [curva(pagina(i, lado)) for i in range(PAGINAS) for lado in (-1, 1)]
 
-    # Nodo suelto dentro de la C, sin traza que lo una a ella
-    nx, ny = C_X + NODO_POS[0] * R, C_Y + NODO_POS[1] * R
     return {
         "grilla": grilla,
         "contorno": contorno,
@@ -268,7 +264,6 @@ def geometria():
         "borde": (curva(sup_izq), curva(sup_der)),
         "libro": libro,
         "c": arco_c(C_R * R, C_APERTURA, 360 - C_APERTURA),
-        "nodo": (nx + OX, ny + OY),
     }
 
 
@@ -286,11 +281,10 @@ def svg(g, pinturas, estilo="", raiz=""):
                  f'<linearGradient id="letra" gradientUnits="userSpaceOnUse" x1="{f(cx - C_EXT)}" '
                  f'y1="{f(cy - C_EXT)}" x2="{f(cx + C_EXT)}" y2="{f(cy + C_EXT)}">'
                  f'<stop offset="0" {p["letra0"]}/><stop offset="1" {p["letra1"]}/></linearGradient>\n    ')
-    nx, ny = g["nodo"]
     estilo = f"\n  <style>{estilo}</style>" if estilo else ""
     return f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" role="img" aria-labelledby="titulo"{raiz}>
   <title id="titulo">CODES++</title>
-  <desc>Globo terráqueo que emerge de un libro abierto, con la letra C y un nodo de circuito.</desc>{estilo}
+  <desc>Globo terráqueo que emerge de un libro abierto, con la letra C.</desc>{estilo}
   <defs>
     {defs}<clipPath id="globo"><circle cx="{f(gx)}" cy="{f(gy)}" r="{R}"/></clipPath>
     <mask id="recorte" maskUnits="userSpaceOnUse" x="0" y="0" width="{W}" height="{H}">
@@ -311,8 +305,6 @@ def svg(g, pinturas, estilo="", raiz=""):
       {"".join(f'<path d="{d}"/>' for d in g["libro"])}
     </g>
     <path d="{g["c"]}" stroke="{p["letra"]}" stroke-width="{f(C_W * R)}" stroke-linecap="butt"/>
-    <circle cx="{f(nx)}" cy="{f(ny)}" r="{NODO_R}" stroke="{p["trazo"]}" stroke-width="5"/>
-    <circle cx="{f(nx)}" cy="{f(ny)}" r="3" {p["punto"]} stroke="none"/>
   </g>
 </svg>
 """
@@ -323,7 +315,6 @@ def pinturas_tema(tema):
     t = TEMAS[tema]
     return {
         "grilla": f'stroke="{ESCALA[t["grilla"]]}"',
-        "punto": f'fill="{ESCALA[t["punto"]]}"',
         "trazo": "url(#trazo)", "letra": "url(#letra)",
         "trazo0": f'stop-color="{ESCALA[t["trazo"][0]]}"', "trazo1": f'stop-color="{ESCALA[t["trazo"][1]]}"',
         "letra0": f'stop-color="{ESCALA[t["letra"][0]]}"', "letra1": f'stop-color="{ESCALA[t["letra"][1]]}"',
@@ -332,7 +323,7 @@ def pinturas_tema(tema):
 
 def css(tema):
     t = TEMAS[tema]
-    return (f".grilla{{stroke:{ESCALA[t['grilla']]}}}.punto{{fill:{ESCALA[t['punto']]}}}"
+    return (f".grilla{{stroke:{ESCALA[t['grilla']]}}}"
             + "".join(f".{rol}{i}{{stop-color:{ESCALA[t[rol][i]]}}}" for rol in ("trazo", "letra") for i in (0, 1)))
 
 
@@ -351,13 +342,13 @@ def main():
         escribir(out / f"logo-{tema}.svg", svg(g, pinturas_tema(tema)))
 
     # Adaptable: sigue el modo claro/oscuro del sistema (también dentro de <img>)
-    clases = {"grilla": 'class="grilla"', "punto": 'class="punto"', "trazo": "url(#trazo)", "letra": "url(#letra)",
+    clases = {"grilla": 'class="grilla"', "trazo": "url(#trazo)", "letra": "url(#letra)",
               **{f"{rol}{i}": f'class="{rol}{i}"' for rol in ("trazo", "letra") for i in (0, 1)}}
     estilo = css("claro") + "@media (prefers-color-scheme:dark){" + css("oscuro") + "}"
     escribir(out / "logo.svg", svg(g, clases, estilo))
 
     # Monocromo: todo en currentColor (toma el color del texto donde se inserte)
-    mono = {"grilla": 'stroke="currentColor"', "punto": 'fill="currentColor"',
+    mono = {"grilla": 'stroke="currentColor"',
             "trazo": "currentColor", "letra": "currentColor"}
     escribir(out / "logo-mono.svg", svg(g, mono, raiz=f' color="{ESCALA[400]}"'))
 

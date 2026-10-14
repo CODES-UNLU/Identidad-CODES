@@ -177,7 +177,7 @@ En las hojas de estilo del sitio se utiliza intensivamente el canal Alfa del col
 
 ## 🎨 10. Guía de Aplicación para el Logotipo de CODES++
 
-El imagotipo (globo terráqueo que emerge de un libro abierto, con la letra **C** y un nodo de circuito) usa una **única familia teal**: los tres colores de marca del sitio más los escalones intermedios que hacen falta, todos con el mismo tono (OKLCH h ≈ 197,6°). Los verdes menta y los azules quedan fuera de la marca: mezclados con el teal hacen que el logo parezca de otra identidad.
+El imagotipo (globo terráqueo que emerge de un libro abierto, con la letra **C**) usa una **única familia teal**: los tres colores de marca del sitio más los escalones intermedios que hacen falta, todos con el mismo tono (OKLCH h ≈ 197,6°). Los verdes menta y los azules quedan fuera de la marca: mezclados con el teal hacen que el logo parezca de otra identidad.
 
 ### Escala Teal de la Marca
 
@@ -200,15 +200,13 @@ El imagotipo (globo terráqueo que emerge de un libro abierto, con la letra **C*
 Cada capa del logo usa un escalón propio. Sobre fondo claro, el elemento más importante es el más profundo; sobre fondo oscuro, el más luminoso. Todos los degradados van a 135°, igual que los del sitio.
 
 1. **Versión para Fondos Oscuros (Sitio Web Oficial - `#0f0f0f`):**
-   - **Contorno del Globo, Libro y Nodo:** degradado de `#5dd5d8` (300) a `#30a5a8` (500).
+   - **Contorno del Globo y Libro:** degradado de `#5dd5d8` (300) a `#30a5a8` (500).
    - **La 'C' Institucional:** el elemento focal y más luminoso, de `#95e7e8` (200) a `#39c0c3` (400).
    - **Meridianos y Paralelos:** `#1d6d6f` (700), para no competir con el trazo principal.
-   - **Punto del Nodo:** `#e7fafa` (50).
 2. **Versión para Fondos Claros / Papelería:**
-   - **Contorno del Globo, Libro y Nodo:** el gradiente institucional `--gradient` (`#39c0c3` → `#2a8a8d`).
+   - **Contorno del Globo y Libro:** el gradiente institucional `--gradient` (`#39c0c3` → `#2a8a8d`).
    - **La 'C' Institucional:** el elemento más profundo, de `#30a5a8` (500) a `#1d6d6f` (700).
    - **Meridianos y Paralelos:** `#5dd5d8` (300).
-   - **Punto del Nodo:** `#1d6d6f` (700).
 3. **Versión Monocromática:**
    - Para fondos oscuros: `#ffffff` o `#39c0c3`.
    - Para fondos claros: `#1a1a1a` o `#2a8a8d`.

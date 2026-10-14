@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 341 277" role="img" aria-labelledby="titulo">
   <title id="titulo">CODES++</title>
-  <desc>Globo terráqueo que emerge de un libro abierto, con la letra C y un nodo de circuito.</desc>
+  <desc>Globo terráqueo que emerge de un libro abierto, con la letra C.</desc>
   <defs>
     <linearGradient id="trazo" gradientUnits="userSpaceOnUse" x1="16" y1="-16" x2="325" y2="293"><stop offset="0" stop-color="#5dd5d8"/><stop offset="1" stop-color="#30a5a8"/></linearGradient>
     <linearGradient id="letra" gradientUnits="userSpaceOnUse" x1="180.04" y1="27.74" x2="328.73" y2="176.42"><stop offset="0" stop-color="#95e7e8"/><stop offset="1" stop-color="#39c0c3"/></linearGradient>
@@ -23,7 +23,5 @@
       <path d="M167.06 252.88 C136.86 203.6 64.36 177.36 16.03 184.44"/><path d="M167.06 252.88 C197.27 203.6 269.77 177.36 318.11 184.44"/><path d="M167.06 260.88 C136.86 215.92 64.36 191.36 16.03 198.44"/><path d="M167.06 260.88 C197.27 215.92 269.77 191.36 318.11 198.44"/>
     </g>
     <path d="M298.23 141.56 A59 59 0 1 1 298.23 62.6" stroke="url(#letra)" stroke-width="30.68" stroke-linecap="butt"/>
-    <circle cx="266.19" cy="116.24" r="8.5" stroke="url(#trazo)" stroke-width="5"/>
-    <circle cx="266.19" cy="116.24" r="3" fill="#e7fafa" stroke="none"/>
   </g>
 </svg>

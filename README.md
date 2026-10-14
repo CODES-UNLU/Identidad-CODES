@@ -6,7 +6,7 @@
 </picture>
 
 Logo vectorizado del Centro Organizado de Estudiantes de Sistemas (UNLu): un globo
-terráqueo que emerge de un libro abierto, con la **C** al frente y un nodo de circuito.
+terráqueo que emerge de un libro abierto, con la **C** al frente.
 
 La paleta es una única familia teal construida alrededor del color principal de
 [codesunlu.tech](https://www.codesunlu.tech/) (`#39c0c3`).
@@ -50,9 +50,8 @@ luminoso. Los degradados van a 135°, como los del sitio.
 | Elemento | Fondo claro | Fondo oscuro |
 |---|---|---|
 | Grilla del globo | 300 | 700 |
-| Contorno, libro y nodo | 400 → 600 | 300 → 500 |
+| Contorno y libro | 400 → 600 | 300 → 500 |
 | Letra C | 500 → 700 | 200 → 400 |
-| Punto del nodo | 700 | 50 |
 
 ## Uso
 
