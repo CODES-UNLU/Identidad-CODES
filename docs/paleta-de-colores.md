@@ -1,15 +1,15 @@
-# 🎨 Paleta de Colores Oficial de CODES++
+# 🎨 Paleta de Colores Oficial de CODES
 
 > **Documento de especificación y tokens de diseño extraídos del sitio web oficial:**  
 > 🌐 [https://www.codesunlu.tech/](https://www.codesunlu.tech/)  
-> 🏛️ **Centro Organizado de Estudiantes de Sistemas (CODES++) - Universidad Nacional de Luján (UNLu)**  
+> 🏛️ **Centro Organizado de Estudiantes de Sistemas (CODES) - Universidad Nacional de Luján (UNLu)**  
 > 📅 *Extracción y análisis: Octubre 2026*
 
 ---
 
 ## 📌 1. Identidad Visual y Filosofía de Diseño
 
-El diseño de la plataforma web de **CODES++** se basa en una estética **Dark-first moderna e industrial de alta tecnología**, orientada a estudiantes y profesionales del desarrollo de software.
+El diseño de la plataforma web de **CODES** se basa en una estética **Dark-first moderna e industrial de alta tecnología**, orientada a estudiantes y profesionales del desarrollo de software.
 
 - **Color Insignia (Brand Accent):** Turquesa / Cyan eléctrico (`#39c0c3`), que evoca conectividad, dinamismo, código y frescura.
 - **Atmósfera:** Fondos oscuros de contraste profundo (`#0f0f0f` a `#2d2d2d`) que reducen la fatiga visual.
@@ -88,7 +88,7 @@ La legibilidad se garantiza mediante cuatro niveles de contraste contra fondos o
 
 ## 🌈 7. Degradados Oficiales (Gradients)
 
-El ecosistema visual de CODES++ destaca por degradados limpios con ángulo de 135 grados:
+El ecosistema visual de CODES destaca por degradados limpios con ángulo de 135 grados:
 
 ### 🌟 Gradientes Institucionales (Firma CODES)
 
@@ -175,7 +175,7 @@ En las hojas de estilo del sitio se utiliza intensivamente el canal Alfa del col
 
 ---
 
-## 🎨 10. Guía de Aplicación para el Logotipo de CODES++
+## 🎨 10. Guía de Aplicación para el Logotipo de CODES
 
 El imagotipo (globo terráqueo que emerge de un libro abierto, con la letra **C**) usa una **única familia teal**: los tres colores de marca del sitio más los escalones intermedios que hacen falta, todos con el mismo tono (OKLCH h ≈ 197,6°). Los verdes menta y los azules quedan fuera de la marca: mezclados con el teal hacen que el logo parezca de otra identidad.
 
@@ -310,7 +310,7 @@ module.exports = {
 ### Tokens en Formato JSON (`codes-palette.json`)
 ```json
 {
-  "name": "CODES++ Official Web Palette",
+  "name": "CODES Official Web Palette",
   "source": "https://www.codesunlu.tech/",
   "colors": {
     "primary": "#39c0c3",

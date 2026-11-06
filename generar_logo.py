@@ -1,4 +1,4 @@
-"""Genera el logo de CODES++ vectorizado.
+"""Genera el logo de CODES vectorizado.
 
 Uso: python generar_logo.py
 Salida: svg/logo.svg (adaptable claro/oscuro), svg/logo-claro.svg, svg/logo-oscuro.svg,
@@ -283,7 +283,7 @@ def svg(g, pinturas, estilo="", raiz=""):
                  f'<stop offset="0" {p["letra0"]}/><stop offset="1" {p["letra1"]}/></linearGradient>\n    ')
     estilo = f"\n  <style>{estilo}</style>" if estilo else ""
     return f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" role="img" aria-labelledby="titulo"{raiz}>
-  <title id="titulo">CODES++</title>
+  <title id="titulo">CODES</title>
   <desc>Globo terráqueo que emerge de un libro abierto, con la letra C.</desc>{estilo}
   <defs>
     {defs}<clipPath id="globo"><circle cx="{f(gx)}" cy="{f(gy)}" r="{R}"/></clipPath>

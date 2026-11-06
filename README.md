@@ -1,8 +1,8 @@
-# Logo CODES++
+# Logo CODES
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="svg/logo-oscuro.svg">
-  <img src="svg/logo-claro.svg" alt="Logo CODES++" width="320">
+  <img src="svg/logo-claro.svg" alt="Logo CODES" width="320">
 </picture>
 
 Logo vectorizado del Centro Organizado de Estudiantes de Sistemas (UNLu): un globo
@@ -57,7 +57,7 @@ luminoso. Los degradados van a 135°, como los del sitio.
 
 ```html
 <!-- Se adapta solo al tema claro/oscuro -->
-<img src="svg/logo.svg" alt="CODES++" width="160">
+<img src="svg/logo.svg" alt="CODES" width="160">
 
 <!-- Favicon -->
 <link rel="icon" href="svg/logo.svg" type="image/svg+xml">
